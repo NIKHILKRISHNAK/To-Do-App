@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+
+<title>To Do</title>
+  
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+<style>
+.body{
+  background-color:#e0e0eb;
+  }
+.cover{
+  background-color: white;
+  width:210px;
+  height:250px;
+  padding:20px;
+  margin:20px;
+  justify-content: center;
+  align-items:center;
+  border-radius:10px;
+  font-family: 'Mochiy Pop P One', sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  }
+.box{
+  display:flex;
+  }
+.input{
+  border:1  #e0e0eb;
+  border-radius:5px;
+  }
+.button{
+  border-radius:5px;
+  background-color:#33334d;
+  color: white;
+  border:0;
+   box-shadow:3px 1px 1px black;
+  }
+.button:hover{
+  background-color: white;
+  color:#33334d;
+ 
+ 
+  }
+.button2{
+  border-radius:50px;
+  background-color:#8585ad;
+ 
+
+  box-shadow:3px 1px 1px;
+  }
+.item{
+  display:flex;
+  justify-content:space-between;
+  box-shadow:0px 0px 2px;
+  border-radius:10px;
+  padding:5px;
+  }
+.close{
+  border-radius:10px;
+  background-color: #7575a3;
+  }
+ 
+.out{
+  height:190px;
+  width:220px;
+  overflow: auto;
+}
+</style>
+</head>
+
+<body class="body">
+  <div class="cover">
+    <div class="box">
+  <input class="input" type="text" id="input" placeholder="enter..."></input>
+ 
+ <span> <button class="button2" onclick="functioninput()">Add</button></span></div>
+  </br>
+
+  <div id="output" class="out">
+  </div>
+  <div>
+  <button class="button"  onclick="clearall()">Clear All</button>
+  </div>
+<script>
+const inputbar=document.querySelector("#input");
+const outbar=document.querySelector("#output");
+let inp=[];
+function functioninput()
+{
+  if(inputbar.value==0)
+    {
+      alert ("Please input anything");
+      }
+  else
+    {
+const inpu=inputbar.value;
+inp.push(inpu);
+inputbar.value="";
+  out();
+      }
+  }
+
+function out()
+{
+  outbar.innerHTML="";
+  for(let i=0;i<inp.length;i++)
+    {
+      outbar.innerHTML+=`<div class="item">${inp[i]}<span><button  class="close" onclick="remove(${i})">×</button></span></div>`;
+      }
+  }
+function remove(index)
+{
+  inp.splice(index, 1);
+  
+out();
+  }
+function clearall()
+{
+  confirm ("Are you sure to clear");
+  inp=[];
+  out();
+  }
+</script>
+  </body>
+
+</html>
